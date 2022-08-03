@@ -1,8 +1,67 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+:root {
+  font-size: 16px;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: whitesmoke;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.main-links, .account-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: black;
+  font-weight: 600;
+}
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.nav-btn {
+  background-color: gainsboro;
+}
+
+.btn:hover {
+  filter: brightness(0.9);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
 }
