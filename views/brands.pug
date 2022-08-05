@@ -14,12 +14,10 @@ block content
 			col(class='col-25')
 			col(class='col-25')
 			col(class='col-25')
-		thead(class='text-left')
-			th Name
 		tbody 
 			each brand in list_brands
 				tr 
 					td(class='table-brand-name') !{brand.name}
 					td #[a(href=brand.url) Details]
 					td #[a(href=`${brand.url}/edit`) Edit]
-					td #[a(href=`/listings/$brand=?{brand.name}`) Listings]
+					td #[a(href=`/listings/?brand=${brand.name}`) Listings]
