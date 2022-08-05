@@ -17,4 +17,8 @@ const carListingSchema = new Schema(
     }
 );
 
+carListingSchema.virtual('url').get(function() {
+    return '/listings' + this._id;
+});
+
 export default mongoose.model('CarListing', carListingSchema);

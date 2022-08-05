@@ -1,4 +1,23 @@
 extends layout
 
 block content
-	
+	.hero 
+		p It's simple and smart
+		h2.hero-main Search, Find & Buy
+		.site-statistics 
+			.statbox 
+				img(src="/images/icons8-bmw-100.png", alt="" class="stat-icon")
+				h3= brands.length + " brands"
+			.statbox 
+				img(src="/images/icons8-total-sales-96.png", alt="stat-icon" class="stat-icon")
+				h3= numListings + " listings"
+
+		section.search-section 
+			form(action="/" method="POST" class='search-form')
+				.search-input
+					label(for="name") Brand 
+					select(name="brand")
+						each brand in brands
+							option(value=brand) !{brand.name} 
+				.search-input 
+

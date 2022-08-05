@@ -8,4 +8,8 @@ const BrandSchema = new Schema(
     }
 );
 
+BrandSchema.virtual('url').get(function() {
+    return '/brands/' + this.name; 
+});
+
 export default mongoose.model('Brand', BrandSchema);

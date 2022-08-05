@@ -6,6 +6,7 @@
 
 :root {
   font-size: 16px;
+  --dark-blue: #0c3b7e;
 }
 
 html, body {
@@ -15,6 +16,11 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   background-color: whitesmoke;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
 }
 
 .navbar {
@@ -59,6 +65,94 @@ body {
 .btn:hover {
   filter: brightness(0.9);
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.hero {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.hero-main {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.site-statistics {
+  display: flex;
+  justify-content: space-around;
+  gap: 1.5rem;
+}
+
+.statbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-icon {
+  height: 50px;
+  width: 50px;
+}
+
+.search-form {
+  display: flex;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Brands Home Page */
+.brands-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.add-btn {
+  color: whitesmoke;
+  background-color: var(--dark-blue);
+  font-size: 0.9rem;
+}
+
+.brands-table {
+  margin-top: 1rem;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 8px;
+  border-spacing: 8px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.brands-table th {
+  text-align: center;
+}
+
+.col-25 {
+  width: 25%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.table-brand-name {
+  font-weight: 600;
+}
+
 
 @media (max-width: 768px) {
   .navbar {

@@ -10,15 +10,13 @@ head
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 body
 	nav.navbar 
-		.nav-section 
-			h2.logo Logo
-		.nav-section 
-			ul.main-links 
-				li #[a(href='/' class='nav-link') Home] 
-				li #[a(href='/brands' class='nav-link') Brands]
-				li #[a(href='/listings' class='nav-link') Listings]
-		.nav-section
-			ul.account-links 
-				li #[a(href='/login' class='nav-link btn nav-btn') Log In] 
-				li #[a(href='/signup' class='nav-link btn nav-btn') Sign Up]
-	block content
+		h2.logo Logo
+		ul.main-links 
+			li #[a(href='/' class='nav-link') Home] 
+			li #[a(href='/brands' class='nav-link') Brands]
+			li #[a(href='/listings' class='nav-link') Listings]
+		ul.account-links 
+			li #[a(href='/login' class='nav-link btn nav-btn') Log In] 
+			li #[a(href='/signup' class='nav-link btn nav-btn') Sign Up]
+	.content
+		block content

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const carModelSchema = new Schema(
+const carSeriesSchema = new Schema(
     {
         name: {type: String, required: true, minLength: 1, maxLength: 25},
         brand: {type: Schema.Types.ObjectId, ref: 'Brand', required: true},
@@ -10,4 +10,8 @@ const carModelSchema = new Schema(
     }
 );
 
-export default mongoose.model('CarSeries', carModelSchema);
+carSeriesSchema.virtual('url').get(function() {
+    return '/brands/makes/' + this.name;
+});
+
+export default mongoose.model('CarSeries', carSeriesSchema);
