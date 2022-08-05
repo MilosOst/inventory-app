@@ -56,6 +56,7 @@ a {
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .nav-btn {
@@ -153,6 +154,44 @@ a {
   font-weight: 600;
 }
 
+/* Brands Create Form */
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-family: monospace;
+}
+
+.form-errors {
+  color: red;
+  font-weight: bold;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.submit-btn {
+  background-color: lightgreen;
+}
 
 @media (max-width: 768px) {
   .navbar {

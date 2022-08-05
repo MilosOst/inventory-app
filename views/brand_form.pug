@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    h1 #{title}
+
+    form(method="POST" action="/brands/add" class='create-form')
+        .form-group 
+            label(for="brand-name" class='label') Brand Name
+            input(type="name" id='brand-name' name='name' value=(brand ? brand.name : '') class='form-input' required=true)
+        button(type='submit' class='btn submit-btn') Submit
+    
+    if errors 
+        ul.form-errors 
+            each error in errors
+                li!= (error.msg ? error.msg : error.message)
