@@ -1,5 +1,9 @@
 import Brand from '../models/brand.js'
+import CarSeries from '../models/carSeries.js';
+import CarListing from '../models/carListing.js';
 import {body, validationResult} from 'express-validator';
+import * as async from 'async';
+import mongoose, { Mongoose } from 'mongoose';
 
 export function index(req, res, next) {
     Brand.find().exec(function (err, list_brands) {
@@ -14,7 +18,7 @@ export function index(req, res, next) {
 
 // Display Brand create form on GET
 export function brand_create_get(req, res, next) {
-    res.render('brand_form', {title: 'Create Brand'})
+    res.render('brand_create_form', {title: 'Create Brand'})
 };
 
 // Handle Brand create on POST
@@ -44,7 +48,7 @@ export const brand_create_post = [
                 if (found_brand) {
                     // Brand already exists, display error
                     const duplicateError = new Error('A Brand with this name already exists.')
-                    res.render('brand_form', {brand: brand, errors: [duplicateError]});
+                    res.render('brand__create_form', {brand: brand, errors: [duplicateError]});
                 }
                 else {
                     brand.save((err) => {
@@ -58,3 +62,43 @@ export const brand_create_post = [
         }
     }
 ];
+
+// Display Brand delete form on GET
+export async function brand_delete_get(req, res, next) {
+
+    try {
+        // Check that brand exists
+        const brand = await Brand.findOne({name: req.params.id}).collation({locale: 'en', strength: 2});
+
+        if (brand) {
+            res.render('brand_delete', {type: 'brand', brand: req.params.id});
+        }
+        else {
+            res.render('not_found', {context: 'brand', value: req.params.id});
+        }
+    }
+    catch (err) {
+        return next(err);
+    }
+}
+
+// Handle Brand delete on POST
+export async function brand_delete_post(req, res, next) {
+
+    try {
+        const brand = await Brand.findOne({name: req.params.id});
+        const brand_id = brand._id;
+
+        await Promise.all([
+            CarSeries.deleteMany({brand: brand_id}),
+            CarListing.deleteMany({brand: brand_id}),
+            Brand.findByIdAndDelete(brand_id),
+        ]);
+
+        res.redirect('/');
+
+    }
+    catch (err) {
+        return next(err);
+    }
+}

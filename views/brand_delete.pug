@@ -1,0 +1,10 @@
+extends layout 
+
+block content
+    .delete-page
+        h1 Are you sure you want to delete 
+            span.capitalize #{brand}
+            |  brand?
+        p.delete-msg This will delete all car series and listings related to it.
+        form(action=`/brands/${brand}/delete` method="POST") 
+            button(type='submit' class='btn') Confirm

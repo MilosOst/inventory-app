@@ -57,6 +57,7 @@ a {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  margin: auto;
 }
 
 .nav-btn {
@@ -192,6 +193,24 @@ a {
 .submit-btn {
   background-color: lightgreen;
 }
+
+/* Brand Delete Page */
+
+.delete-page {
+  text-align: center;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.delete-msg {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
 
 @media (max-width: 768px) {
   .navbar {
