@@ -16,6 +16,24 @@ export function index(req, res, next) {
     });
 }
 
+// Display Brand detail page on GET
+export async function brand_detail_get(req, res, next) {
+    try {
+        // First, check that brand exists
+        const brand = await Brand.findOne({name: req.params.id}).collation({locale: 'en', strength: 2});
+
+        if (!brand) res.render('not_found', {context: 'brand', value: req.params.id});
+        
+        const seriesList = await CarSeries.find({brand: brand._id});
+        const listings = await CarListing.find({brand: brand._id}).populate('series');
+
+        res.render('brand_detail', {brand_name: brand.name, seriesList, listings})
+    }
+    catch (err) {
+        return next(err);
+    }
+}
+
 // Display Brand create form on GET
 export function brand_create_get(req, res, next) {
     res.render('brand_create_form', {title: 'Create Brand'})
@@ -96,7 +114,6 @@ export async function brand_delete_post(req, res, next) {
         ]);
 
         res.redirect('/');
-
     }
     catch (err) {
         return next(err);

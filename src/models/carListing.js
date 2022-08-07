@@ -12,13 +12,17 @@ const carListingSchema = new Schema(
         available: {type: Boolean, default: true},
         price: {type: Number},
         description: {type: String, minLength: 1, maxLength: 200},
-        color: {type: String, enum: ['White', 'Black', 'Grey', 'Blue', 'Red', 'Orange', 'Green'], minLength: 1, maxLength: 20},
+        color: {type: String, enum: ['White', 'Black', 'Grey', 'Blue', 'Red', 'Orange', 'Green'], minLength: 1, maxLength: 20, required: true},
         listing_date: {type: Date, default: Date.now}
     }
 );
 
 carListingSchema.virtual('url').get(function() {
-    return '/listings' + this._id;
+    return '/listings/' + this._id;
+});
+
+carListingSchema.virtual('formatted_date').get(function() {
+    return this.listing_date.toLocaleDateString();
 });
 
 export default mongoose.model('CarListing', carListingSchema);

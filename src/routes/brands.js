@@ -8,6 +8,9 @@ const router = express.Router();
 // GET request for Brands home page
 router.get('/', brandController.index);
 
+// GET request for Brand detail page
+router.get('/:id', brandController.brand_detail_get)
+
 // GET request for creating new Brand
 router.get('/add', brandController.brand_create_get);
 

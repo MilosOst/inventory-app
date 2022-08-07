@@ -1,0 +1,40 @@
+extends layout 
+
+block content
+    .brand-detail
+        h1.text-center #{brand_name}
+        div
+            header
+                h2 Series
+                a(href="/series/add") Add Series 
+            if seriesList.length
+                .items-list
+                    each series in seriesList
+                        figure.item-card
+                            h3.card-title #{series.name}
+                            p #{series.description}
+            else 
+                | There are no series which belong to this brand yet.
+        div
+            header
+                h2 Listings
+                a(href="/listings/add") Add Listing 
+            if listings.length
+                .listings
+                    each listing in listings
+                        figure.listing-card
+                            div.listing-info
+                                h3.card-title #{listing.year} #{listing.name}
+                                p.bold Series: #{listing.series.name}
+                                p #{listing.description}
+                                .listing-extra-info 
+                                    .flex
+                                        img(src="/images/calendar.svg", alt="Listing Date")
+                                        p #{listing.formatted_date}
+                                    span(class=(listing.available ? 'available': 'not-available')) Available: #{listing.available ? 'Yes' : 'No'}
+                            div.listing-stats
+                                p.bold $#{listing.price}
+                                p.bold #{listing.mileage} miles
+                                a(href=(listing.url)) View
+            else 
+                p There are no listings under this brand yet.
